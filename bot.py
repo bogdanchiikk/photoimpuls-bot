@@ -84,7 +84,9 @@ else:
     logger.warning("Google Sheets: SHEETS_WEBAPP_URL not set, table writes disabled")
 
 #             
-BOT_TOKEN = os.getenv("BOT_TOKEN", "8470965173:AAEESDjQwRL6BYXMe7TV0nchnJKQ70Wd038").strip()
+BOT_TOKEN = os.getenv("BOT_TOKEN", "").strip()
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN must be set in .env file")
 _channel_id = os.getenv("CHANNEL_ID", "")
 CHANNEL_ID = int(_channel_id) if _channel_id.lstrip("-").isdigit() else _channel_id
 CHANNEL_INVITE_LINK = os.getenv(
